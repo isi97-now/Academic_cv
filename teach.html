@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isabella Possaghi | PhD Candidate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!--<link rel="stylesheet" href="grid.css" />-->
+</head>
+<body class="graph-paper">
+<main class="page">
+
+<div class="navbar">
+  <a href="index.html">CV</a> •
+  <a href="teach.html">Teaching</a> •
+  <a href="other.html">I am also a designer!</a> 
+</div>
+
+  <hr class="divider" />
+ 
+  <!-- ── Academic Profile ──────────────────────────────────── -->
+  <section aria-labelledby="profile-heading">
+    <h2 class="section-title" id="profile-heading">Teaching experience</h2>
+    <p class="bio">
+      I have engaged in various <strong>teaching</strong> and <strong>supervision</strong> activities. Here a brief summarization of them.
+    </p>
+  </section>
+ 
+  <hr class="divider" />
+ 
+  <!-- ── Teaching ───────────────────────────────────────────── -->
+  <section aria-labelledby="teaching-heading">
+    <h2 class="section-title" id="teaching-heading">Teaching &amp; Supervision</h2>
+    <p style="font-size:0.82rem; color:var(--ink-faint); margin-bottom:1.2rem; font-family:var(--font-mono);">All activities at IDI, NTNU.</p>
+    <div class="entry-list">
+ 
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">Fall 2023, 2024, 2025</span>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">Supervisor — <em>Customer Driven Project</em></p>
+          <p class="entry-desc">Master's course, 15 credits. Guided student teams in delivering client-focused software engineering solutions, emphasising project development, management, and long-term sustainability.</p>
+        </div>
+      </article>
+ 
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">Spring 2023, 2024, 2025</span>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">Supervisor — <em>Informatics Project II</em></p>
+          <p class="entry-desc">Bachelor's course, 15 credits. Guided student teams in managing cooperative and organisational aspects while delivering client-focused software development projects across the full project lifecycle.</p>
+        </div>
+      </article>
+ 
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">Spring 2024</span>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">Examiner — <em>Cooperation Technology and Social Media</em></p>
+          <p class="entry-desc">Master's course, 7.5 credits. Evaluated student deliverables in projects and assignments focused on social media, communities of practice, and groupware applications.</p>
+        </div>
+      </article>
+ 
+    </div>
+  </section>
+ 
+  <hr class="divider" />
+ 
+  <section aria-labelledby="theses-heading">
+    <h2 class="section-title" id="theses-heading">Theses Supervision</h2>
+    <div class="entry-list">
+ 
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">2024 / 2025</span>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">Co-supervisor of Master's Thesis at NTNU</p>
+          <p class="entry-desc"><em>Design Thinking for K–12: A Digital Toolkit for Technologically Rich Education</em> — Isabelle Galleberg &amp; Eva Teisberg.</p>
+        </div>
+      </article>
+ 
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">2023 / 2024</span>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">Co-supervisor of Master's Thesis at NTNU</p>
+          <p class="entry-desc"><em>Real-Time Learning Analytics: Implementing and Testing a Teacher Dashboard utilizing Sensor Data</em> — Håkon Bjørkum &amp; Cecilie Knudsen.</p>
+        </div>
+      </article>
+ 
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">2021 / 2022</span>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">Co-supervisor of Master's Thesis at Politecnico di Milano</p>
+          <p class="entry-desc"><em>Web augmentation for coordinating conversational and visual experiences on the Web</em> — Leonardo Caponi.</p>
+        </div>
+      </article>
+ 
+    </div>
+  </section>
+ 
+  <hr class="divider" />
+ 
+  <footer>
+    <a href="https://isi97-now.github.io/Academic_cv/">Online version ↗</a> &nbsp;·&nbsp; Isabella Possaghi &nbsp;·&nbsp; NTNU, Trondheim
+    <br /><br />
+    For my Clippy assistant I thank <a href="https://www.smore.com/clippy-js">clippyjs</a> by Jordan Scales &nbsp;·&nbsp; Clippy © Microsoft
+  </footer>
+ 
+</main>
+ 
+<!-- ── Clippy ───────────────────────────────────────────────── -->
+<script type="module">
+  import { initAgent } from "https://cdn.jsdelivr.net/npm/clippyjs/dist/index.mjs";
+  import { Clippy } from "https://cdn.jsdelivr.net/npm/clippyjs/dist/agents/index.mjs";
+ 
+  const agent = await initAgent(Clippy);
+  agent.show();
+  agent.speak("Do you use Word to write your manuscripts? I was born in Word. Please don't use Word.");
+ 
+  setInterval(() => agent.animate(), 30000);
+</script>
+ 
+</body>
+</html>

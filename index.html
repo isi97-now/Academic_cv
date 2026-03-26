@@ -7,317 +7,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <style>
-    /* ── Variables ─────────────────────────────────────────── */
-    :root {
-      --ink:        #1c1c1e;
-      --ink-soft:   #49494d;
-      --ink-faint:  #6c6c78;
-      --rule:       rgba(28, 28, 30, 0.10);
-      --accent:     #2952a3;
-      --accent-bg:  #edf2fc;
-      --warn:       #c97a1a;
-      --warn-bg:    #fef6e9;
-      --page-bg:    #faf9f7;
-      --white:      #ffffff;
-
-      --font-serif: 'Cormorant Garamond', Georgia, serif;
-      --font-body:  'DM Sans', sans-serif;
-      --font-mono:  'DM Mono', monospace;
-
-      --max-w:      860px;
-      --col-date:   200px;
-    }
-
-    /* ── Reset & Base ───────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--page-bg);
-      color: var(--ink);
-      font-family: var(--font-body);
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.15s ease, color 0.15s ease;
-    }
-    a:hover { border-color: var(--accent); }
-
-    /* ── Layout ─────────────────────────────────────────────── */
-    .page {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 3rem 2rem 6rem;
-    }
-
-    hr.divider {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 2.5rem 0;
-    }
-
-    /* ── Header ─────────────────────────────────────────────── */
-    .site-header {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 2rem;
-      align-items: start;
-      margin-bottom: 2.5rem;
-    }
-
-    .site-header img {
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 4px;
-      filter: grayscale(15%);
-    }
-
-    .header-text h1 {
-      font-family: var(--font-serif);
-      font-size: 2.8rem;
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 0.6rem;
-    }
-    .header-text h1 em {
-      font-style: italic;
-      color: var(--ink-soft);
-    }
-
-    .contact-list {
-      list-style: none;
-      font-size: 0.85rem;
-      font-family: var(--font-mono);
-      color: var(--ink-soft);
-      line-height: 2;
-    }
-    .contact-list li::before {
-      content: '→ ';
-      color: var(--ink-faint);
-    }
-    .contact-list a { color: var(--ink-soft); }
-    .contact-list a:hover { color: var(--accent); }
-
-    /* ── Section headings ───────────────────────────────────── */
-    section { margin-bottom: 0; }
-
-    h2.section-title {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 1.2rem;
-    }
-
-    /* ── Bio ────────────────────────────────────────────────── */
-    .bio {
-      font-size: 0.975rem;
-      color: var(--ink);
-      max-width: 680px;
-      margin-bottom: 1rem;
-    }
-    .bio strong {
-      font-weight: 500;
-      background: var(--accent-bg);
-      padding: 0 3px;
-      border-radius: 2px;
-    }
-
-    .scholar-links {
-      font-size: 0.82rem;
-      font-family: var(--font-mono);
-      color: var(--ink-faint);
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-    .scholar-links a {
-      color: var(--ink-faint);
-      border-bottom: 1px solid var(--rule);
-    }
-    .scholar-links a:hover { color: var(--accent); border-color: var(--accent); }
-
-    /* ── CV Entry ───────────────────────────────────────────── */
-    .entry-list { display: flex; flex-direction: column; gap: 1.6rem; }
-
-    .entry {
-      display: grid;
-      grid-template-columns: var(--col-date) 1fr;
-      gap: 0 1.8rem;
-      align-items: start;
-    }
-
-    .entry-date {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--ink-faint);
-      line-height: 1.5;
-      padding-top: 0.15rem;
-    }
-
-    .date-badge {
-      display: inline-block;
-      background: var(--accent-bg);
-      color: var(--accent);
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 2px 7px;
-      border-radius: 3px;
-      line-height: 1.6;
-    }
-
-    .entry-place {
-      font-size: 0.78rem;
-      color: var(--ink-faint);
-      margin-top: 0.3rem;
-      line-height: 1.5;
-    }
-
-    .entry-body {}
-
-    .entry-title {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.4;
-      margin-bottom: 0.3rem;
-    }
-
-    .entry-desc {
-      font-size: 0.875rem;
-      color: var(--ink-soft);
-      line-height: 1.65;
-    }
-
-    /* ── Skill table ────────────────────────────────────────── */
-    .skills-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-    .skill-row {
-      display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 0 1rem;
-      font-size: 0.875rem;
-    }
-    .skill-label {
-      font-weight: 500;
-      color: var(--ink);
-      font-size: 0.82rem;
-    }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-
-    .tag {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 3px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      line-height: 1.7;
-    }
-    .tag-high   { background: #fde8e8; color: #a33030; }
-    .tag-mid    { background: #fef6e9; color: var(--warn); }
-    .tag-low    { background: #e9f4ee; color: #2a7a48; }
-
-    /* ── Publications ───────────────────────────────────────── */
-    .pub-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-    }
-    .pub-item {
-      font-size: 0.875rem;
-      line-height: 1.65;
-      color: var(--ink-soft);
-      padding-left: 1.1rem;
-      border-left: 2px solid var(--rule);
-      transition: border-color 0.2s;
-    }
-    .pub-item:hover { border-color: var(--accent); }
-    .pub-item strong { color: var(--ink); font-weight: 500; }
-    .pub-venue {
-      font-style: italic;
-      color: var(--ink-faint);
-    }
-    .pub-award {
-      display: inline-block;
-      background: var(--warn-bg);
-      color: var(--warn);
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      padding: 1px 6px;
-      border-radius: 3px;
-      margin-left: 0.4rem;
-      vertical-align: middle;
-    }
-
-    .pub-section-label {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin: 1.6rem 0 0.8rem;
-    }
-
-    /* ── Languages ──────────────────────────────────────────── */
-    .lang-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .lang-row {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      font-size: 0.875rem;
-      gap: 0 1rem;
-    }
-    .lang-name { font-weight: 500; }
-    .lang-detail { color: var(--ink-soft); }
-
-    /* ── Footer ─────────────────────────────────────────────── */
-    footer {
-      margin-top: 3rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--ink-faint);
-      text-align: center;
-    }
-    footer a { color: var(--ink-faint); border-bottom: 1px solid var(--rule); }
-
-    /* ── Responsive ─────────────────────────────────────────── */
-    @media (max-width: 600px) {
-      .site-header { grid-template-columns: 1fr; }
-      .site-header img { width: 100px; height: 100px; }
-      .entry { grid-template-columns: 1fr; gap: 0.3rem; }
-      .skill-row { grid-template-columns: 1fr; }
-      .lang-row { grid-template-columns: 1fr; }
-      .header-text h1 { font-size: 2rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
+  <!-- <link rel="stylesheet" href="grid.css" /> -->
 </head>
-<body>
+<body class="graph-paper">
 <main class="page">
 
+<div class="navbar">
+  <a href="index.html">CV</a> •
+  <a href="teach.html">Teaching</a> •
+  <a href="other.html">I am also a designer!</a> 
+</div>
+
+  <hr class="divider" />
+ 
   <!-- ── Header ───────────────────────────────────────────── -->
   <header class="site-header">
-    <img src="profile.png" alt="Portrait of Isabella Possaghi" />
+    <!-- <img src="profile.png" alt="Portrait of Isabella Possaghi" /> -->
     <div class="header-text">
-      <h1> Isabella Possaghi <em>/ PhD Candidate </em></h1>
+      <h1> Isabella Possaghi £ </h1>
+      <h1> <em> PhD Candidate </em></h1>
       <ul class="contact-list">
         <li>Working at: NTNU IT-bygget, Sem Sælands vei 9, 7034 Trondheim</li>
         <li>write to: <a href="mailto:isabella.possaghi@ntnu.no">isabella.possaghi@ntnu.no</a> — institutional</li>
@@ -326,9 +35,9 @@
       </ul>
     </div>
   </header>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ── Academic Profile ──────────────────────────────────── -->
   <section aria-labelledby="profile-heading">
     <h2 class="section-title" id="profile-heading">Academic Profile</h2>
@@ -342,14 +51,14 @@
       <a href="https://isi97-now.github.io/Academic_cv/">Online CV</a>
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ── Current Positions ──────────────────────────────────── -->
   <section aria-labelledby="positions-heading">
     <h2 class="section-title" id="positions-heading">Current Academic Positions</h2>
     <div class="entry-list">
-
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Oct 2022 – ~end of 2026</span>
@@ -360,8 +69,8 @@
           <p class="entry-desc">Conducting research on child–computer interaction and constructionist learning approaches, integrating emerging technologies, multimodal data, and learning analytics to enhance educational experiences in K–12 settings.</p>
         </div>
       </article>
-
-	  <article class="entry">
+ 
+      <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Feb 2026 – ~end of 2026</span>
           <p class="entry-place">IDI, NTNU<br />Trondheim</p>
@@ -371,7 +80,7 @@
           <p class="entry-desc"> Contributing to stakeholder engagement, event organisation, and the development of project materials within an international consortium. Co-funded by the European Union.</p>
         </div>
       </article>
-
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Aug 2025 – Jul 2026</span>
@@ -382,16 +91,27 @@
           <p class="entry-desc">Elected representative for temporary academic staff, contributing to strategic discussions and communication between department management and PhD and Postdoctoral researchers.</p>
         </div>
       </article>
-
+ 
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
-  <section aria-labelledby="positions-heading">
-    <h2 class="section-title" id="positions-heading">Past Academic Positions</h2>
+ 
+  <section aria-labelledby="past-positions-heading">
+    <h2 class="section-title" id="past-positions-heading">Past Academic Experiences</h2>
     <div class="entry-list">
 
+            <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">March 2026</span>
+          <p class="entry-place">Università della Svizzera Italiana<br />Faculty of Informatics, Lugano</p>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">Visiting Period as a PhD student</p>
+          <p class="entry-desc">Collaboration with the Laboratory of User eXperience, Interaction & Accessibility (LUXIA), with a focus on participatory design for and with children.</p>
+        </div>
+      </article>
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Oct 2022 – Aug 2025</span>
@@ -402,27 +122,18 @@
           <p class="entry-desc">Contributing to research and development activities within the Exten.(D.T.)² project, focusing on design thinking in-class experiences with target users (2022–2025) and project documentation and reporting (2025) within an international consortium. Funded by Horizon Europe and Innovate UK — Grant no. 101060231.</p>
         </div>
       </article>
-
+ 
+    </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ── Education ──────────────────────────────────────────── -->
   <section aria-labelledby="education-heading">
     <h2 class="section-title" id="education-heading">Education</h2>
     <div class="entry-list">
-	
-	  <article class="entry">
-        <div class="entry-date">
-          <span class="date-badge">March 2026</span>
-          <p class="entry-place">Università della Svizzera Italiana<br />Faculty of Informatics, Lugano</p>
-        </div>
-        <div class="entry-body">
-          <p class="entry-title">Visiting Period as a PhD student<em> </em></p>
-          <p class="entry-desc"> Collaboration with the Laboratory of User eXperience, Interaction & Accessibility (LUXIA), with a focus on participatory design for and with children. <em> </em> </p>
-        </div>
-      </article>
-
+ 
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Sept 2019 – Apr 2022</span>
@@ -430,11 +141,11 @@
         </div>
         <div class="entry-body">
           <p class="entry-title">MSc in Communication Design — <em>110 cum Laude / 110</em></p>
-          <p class="entry-desc">Specialised in interaction design, inclusive design, multimedia design, data visualisation, and editorial design, with strong skills in user-centred design, iterative prototyping, and accessible conversational interfaces. 
-			Thesis: <em>"Patterns for the Conversational Web: From User Research to the Iterative Design of Conversational Solutions."</em> — <a href="https://isi97-now.github.io/conweb_patterns/index.html">Patterns ConWeb ↗</a></p>
+          <p class="entry-desc">Specialised in interaction design, inclusive design, multimedia design, data visualisation, and editorial design, with strong skills in user-centred design, iterative prototyping, and accessible conversational interfaces.
+          Thesis: <em>"Patterns for the Conversational Web: From User Research to the Iterative Design of Conversational Solutions."</em> — <a href="https://isi97-now.github.io/conweb_patterns/index.html">Patterns ConWeb ↗</a></p>
         </div>
       </article>
-
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Oct 2016 – Jul 2019</span>
@@ -445,18 +156,18 @@
           <p class="entry-desc">Gained expertise in exhibition design, lighting design, and the anthropology of spaces, with strong skills in spatial planning, aesthetic composition, and user-centred design. Thesis: <em>"The Spoon River of the Eight-Thousanders: Narratives Torn from the Slopes of Everest."</em></p>
         </div>
       </article>
-
+ 
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ── Teaching ───────────────────────────────────────────── -->
   <section aria-labelledby="teaching-heading">
     <h2 class="section-title" id="teaching-heading">Teaching &amp; Supervision</h2>
     <p style="font-size:0.82rem; color:var(--ink-faint); margin-bottom:1.2rem; font-family:var(--font-mono);">All activities at IDI, NTNU.</p>
     <div class="entry-list">
-
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Fall 2023, 2024, 2025</span>
@@ -466,7 +177,7 @@
           <p class="entry-desc">Master's course, 15 credits. Guided student teams in delivering client-focused software engineering solutions, emphasising project development, management, and long-term sustainability.</p>
         </div>
       </article>
-
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Spring 2023, 2024, 2025</span>
@@ -476,7 +187,7 @@
           <p class="entry-desc">Bachelor's course, 15 credits. Guided student teams in managing cooperative and organisational aspects while delivering client-focused software development projects across the full project lifecycle.</p>
         </div>
       </article>
-
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Spring 2024</span>
@@ -486,17 +197,16 @@
           <p class="entry-desc">Master's course, 7.5 credits. Evaluated student deliverables in projects and assignments focused on social media, communities of practice, and groupware applications.</p>
         </div>
       </article>
-
+ 
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
-  <section>
-    <h2 class="section-title" id="teaching-heading">Theses Supervision</h2>
-    <p style="font-size:0.82rem; color:var(--ink-faint); margin-bottom:1.2rem; font-family:var(--font-mono);"></p>
-    <div class="entry-list"> 
-
+ 
+  <section aria-labelledby="theses-heading">
+    <h2 class="section-title" id="theses-heading">Theses Supervision</h2>
+    <div class="entry-list">
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">2024 / 2025</span>
@@ -506,7 +216,7 @@
           <p class="entry-desc"><em>Design Thinking for K–12: A Digital Toolkit for Technologically Rich Education</em> — Isabelle Galleberg &amp; Eva Teisberg.</p>
         </div>
       </article>
-
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">2023 / 2024</span>
@@ -516,7 +226,7 @@
           <p class="entry-desc"><em>Real-Time Learning Analytics: Implementing and Testing a Teacher Dashboard utilizing Sensor Data</em> — Håkon Bjørkum &amp; Cecilie Knudsen.</p>
         </div>
       </article>
-
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">2021 / 2022</span>
@@ -526,33 +236,33 @@
           <p class="entry-desc"><em>Web augmentation for coordinating conversational and visual experiences on the Web</em> — Leonardo Caponi.</p>
         </div>
       </article>
-
+ 
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ── Reviewing ──────────────────────────────────────────── -->
   <section aria-labelledby="reviewing-heading">
     <h2 class="section-title" id="reviewing-heading">Reviewer</h2>
     <div class="entry-list">
-
-	  <article class="entry">
+ 
+      <article class="entry">
         <div class="entry-date"><span class="date-badge">2024 &amp; 2025 &amp; 2026</span></div>
         <div class="entry-body">
           <p class="entry-title">Interaction Design and Children (IDC)</p>
           <p class="entry-desc">ACM Conference</p>
         </div>
       </article>
-
-	  <article class="entry">
+ 
+      <article class="entry">
         <div class="entry-date"><span class="date-badge">2025</span></div>
         <div class="entry-body">
           <p class="entry-title">International Journal of Child-Computer Interaction (IJCCI)</p>
           <p class="entry-desc">Elsevier Journal</p>
         </div>
       </article>
-
+ 
       <article class="entry">
         <div class="entry-date"><span class="date-badge">2025</span></div>
         <div class="entry-body">
@@ -560,7 +270,7 @@
           <p class="entry-desc">ACM Conference</p>
         </div>
       </article>
-
+ 
       <article class="entry">
         <div class="entry-date"><span class="date-badge">2025</span></div>
         <div class="entry-body">
@@ -568,7 +278,7 @@
           <p class="entry-desc">Taylor &amp; Francis Journal</p>
         </div>
       </article>
-
+ 
       <article class="entry">
         <div class="entry-date"><span class="date-badge">2025</span></div>
         <div class="entry-body">
@@ -576,45 +286,109 @@
           <p class="entry-desc">Taylor &amp; Francis Journal</p>
         </div>
       </article>
-
-
+ 
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ── Other Services ─────────────────────────────────────── -->
   <section aria-labelledby="services-heading">
     <h2 class="section-title" id="services-heading">Other Services to Profession</h2>
     <div class="entry-list">
-
+ 
       <article class="entry">
-
         <div class="entry-date"><span class="date-badge">28 - 29 Aug 2025</span></div>
         <div class="entry-body">
           <p class="entry-title">Trondheim Skaperfest (Maker Festival) — LCI Lab</p>
           <p class="entry-desc">Contributing to the dissemination of research and professional practices in design, learning technologies, and interaction.</p>
         </div>
       </article>
-
+ 
       <article class="entry">
         <div class="entry-date"><span class="date-badge">19–23 Jun 2023</span></div>
         <div class="entry-body">
-          <p class="entry-title">Student Volunteer — IDC Conference 2023</p>
+          <p class="entry-title">Student Volunteer at the Interaction Design and Children (IDC) Conference</p>
           <p class="entry-desc">Supported the organisation and coordination of conference sessions and workshops.</p>
         </div>
       </article>
-
+ 
     </div>
   </section>
-
+ 
   <hr class="divider" />
 
+    <!-- ── Other Services ─────────────────────────────────────── -->
+  <section aria-labelledby="services-heading">
+    <h2 class="section-title" id="services-heading">Seminars and Presentations</h2>
+    <div class="entry-list">
+ 
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">19 Jun 2023</span>
+          <p class="entry-place">Northwestern University, Chicago</p>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">Interaction Design and Children (IDC) Doctoral Consortium</p>
+          <p class="entry-desc">Presented early-stage PhD research for in-depth discussions with peers and senior researchers to refine research focus, methodology, and theoretical framing.</p>
+        </div>
+      </article>
+ 
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">31 May – 1 Jun 2023</span>
+          <p class="entry-place">University of Oulu, Oulu</p>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">Nordic Learning Analytics Summer Institute 2023</p>
+          <p class="entry-desc">Attended with a research poster presentation. Engaged with the learning analytics community on multimodal data analysis methods for technology-enhanced education.</p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">20 - 21 May 2022</span>
+          <p class="entry-place">Fondazione Istituto dei Ciechi, Milan</p>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">ConWeb Demo Presentation at the Accessibility Days 2022</p>
+          <p class="entry-desc">Demo presentation of “ConWeb Project”, with Maristella Matera, Claudia Maria Cutrupi, Gianluca Spadone and Antonella Pasquale.</p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">13 May 2022</span>
+          <p class="entry-place">Politecnico di Milano, Milan</p>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">ConWeb Project Presentation at the Interaction Design Course 2021/2022</p>
+          <p class="entry-desc">Presentation of the “ConWeb Project” in two modules, “ConWeb: the User Research” and “Outcomes of our User Research: ConWeb Patterns and Guidelines”, for the course held by Professors Maristella Matera and Roberta Tassi.</p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">
+          <span class="date-badge">20th July 2021</span>
+          <p class="entry-place">Université Claude Bernard Lyon 1 (online) </p>
+        </div>
+        <div class="entry-body">
+          <p class="entry-title">ConWeb Project Presentation</p>
+          <p class="entry-desc">"Co-designing dialogues on the Web: user research and first hypothesis on conversational patterns", with Claudia Maria Cutrupi. In collaboration with Professor Maristella Matera from Politecnico di Milano and Senior Researcher Marcos Baez.
+          </p>
+        </div>
+      </article>
+ 
+    </div>
+  </section>
+ 
+  <hr class="divider" />
+ 
   <!-- ── Other Academic Experiences ────────────────────────── -->
   <section aria-labelledby="other-heading">
     <h2 class="section-title" id="other-heading">Other Relevant Academic Experiences</h2>
     <div class="entry-list">
-
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Nov 2024 – Apr 2025</span>
@@ -625,51 +399,7 @@
           <p class="entry-desc">School-based research activities integrating programming and design thinking within K–12 settings across the Trøndelag region.</p>
         </div>
       </article>
-
-      <article class="entry">
-        <div class="entry-date">
-          <span class="date-badge">19 Jun 2023</span>
-          <p class="entry-place">Center for Computer Science and Learning Sciences, Northwestern University, Chicago</p>
-        </div>
-        <div class="entry-body">
-          <p class="entry-title">IDC Doctoral Consortium</p>
-          <p class="entry-desc">Presented early-stage PhD research for in-depth discussions with peers and senior researchers to refine research focus, methodology, and theoretical framing.</p>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-date">
-          <span class="date-badge">31 May – 1 Jun 2023</span>
-          <p class="entry-place">University of Oulu</p>
-        </div>
-        <div class="entry-body">
-          <p class="entry-title">Nordic Learning Analytics Summer Institute 2023</p>
-          <p class="entry-desc">Attended with a research poster presentation. Engaged with the learning analytics community on multimodal data analysis methods for technology-enhanced education.</p>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-date">
-          <span class="date-badge">12–20 Nov 2021</span>
-          <p class="entry-place">Chimie ParisTech, PSL Research University, Paris</p>
-        </div>
-        <div class="entry-body">
-          <p class="entry-title">ATHENS Project — <em>Materials of the Cultural Heritage</em></p>
-          <p class="entry-desc">Intensive courses on ancient artefacts and their chemical composition, focusing on how cultural heritage bears information about origin, fabrication, use, and evolution.</p>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-date">
-          <span class="date-badge">5–9 Jun 2021</span>
-          <p class="entry-place">Universiteit van Amsterdam &amp; EIT Digital Summer School, Amsterdam</p>
-        </div>
-        <div class="entry-body">
-          <p class="entry-title">Data Visualisation Consultant — Digital Methods Initiative &amp; EIT Digital Summer School 2021</p>
-          <p class="entry-desc">Investigated and developed the theme "fake news crisis", proposing innovative methods to capture artificial amplification and inauthentic behaviour, communicated through graphical visualisation.</p>
-        </div>
-      </article>
-
+ 
       <article class="entry">
         <div class="entry-date">
           <span class="date-badge">Apr – Jun 2021</span>
@@ -680,44 +410,12 @@
           <p class="entry-desc">Research project <em>"ConWeb: Navigating the Web through Conversation"</em> in collaboration with Université Claude Bernard Lyon 1. Investigated innovative web navigation technologies using natural language speech interaction and conducted end-user testing sessions.</p>
         </div>
       </article>
-
+ 
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
-  <!-- ── Industry Experience ────────────────────────────────── -->
-  <section aria-labelledby="industry-heading">
-    <h2 class="section-title" id="industry-heading">Working Experience Outside Academia</h2>
-    <div class="entry-list">
-
-      <article class="entry">
-        <div class="entry-date">
-          <span class="date-badge">Nov 2021 – May 2022</span>
-          <p class="entry-place">Freelance, Milan</p>
-        </div>
-        <div class="entry-body">
-          <p class="entry-title">UI/UX Designer</p>
-          <p class="entry-desc">UX/UI design for multiple clients, developing mobile and desktop applications from information architecture to usability and accessibility integration. — <a href="https://isi97-now.github.io/portfolio/">Portfolio ↗</a></p>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-date">
-          <span class="date-badge">May 2021 – Jan 2022</span>
-          <p class="entry-place">Politecnico di Milano, School of Design, Milan</p>
-        </div>
-        <div class="entry-body">
-          <p class="entry-title">Graphic Designer</p>
-          <p class="entry-desc">150-hour student–University collaboration on graphic redesign of visual artefacts to support POLI.DESIGN services and events.</p>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <hr class="divider" />
-
+ 
   <!-- ── Technical Skills ───────────────────────────────────── -->
   <section aria-labelledby="skills-heading">
     <h2 class="section-title" id="skills-heading">Technical Skills</h2>
@@ -797,9 +495,9 @@
       </div>
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ── Languages ─────────────────────────────────────────── -->
   <section aria-labelledby="languages-heading">
     <h2 class="section-title" id="languages-heading">Languages</h2>
@@ -818,143 +516,149 @@
       </div>
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ── Publications ──────────────────────────────────────── -->
   <section aria-labelledby="publications-heading">
     <h2 class="section-title" id="publications-heading">Publications</h2>
     <p style="font-size:0.78rem;color:var(--ink-faint);font-family:var(--font-mono);margin-bottom:0.5rem;">Reverse chronological order.</p>
-
+ 
     <p class="pub-section-label">Journals</p>
     <div class="pub-list">
-
+ 
       <p class="pub-item">
         <strong>Possaghi, I.</strong>, Vesin, B., Zhang, F., Sharma, K., Knudsen, C., Bjørkum, H., &amp; Papavlasopoulou, S. (2025).
         <a href="https://link.springer.com/article/10.1186/s40561-025-00410-4">Integrating multi-modal learning analytics dashboard in K-12 education: insights for enhancing orchestration and teacher decision-making.</a>
         <span class="pub-venue">Smart Learning Environments, 12(1), 1–34.</span>
       </p>
-
+ 
       <p class="pub-item">
         <strong>Possaghi, I.</strong>, &amp; Papavlasopoulou, S. (2025).
         <a href="https://www.tandfonline.com/doi/full/10.1080/0144929X.2025.2513569">Technologically-rich computational activities in K–12 education: a systematic review of constructivist and constructionist interventions.</a>
         <span class="pub-venue">Behaviour &amp; Information Technology, 1–40.</span>
       </p>
-
+ 
       <p class="pub-item">
         Pucci, E., Piro, L., <strong>Possaghi, I.</strong>, Mulfari, D., &amp; Matera, M. (2024).
         <a href="https://www.nature.com/articles/s41598-024-66725-3">Co-designing the integration of voice-based conversational AI and web augmentation to amplify web inclusivity.</a>
         <span class="pub-venue">Scientific Reports, 14(1), 16162.</span>
       </p>
-
+ 
     </div>
-
+ 
     <p class="pub-section-label">Conferences</p>
     <div class="pub-list">
-
+ 
       <p class="pub-item">
         Fladmark, A., Holmeide, M., Zhang, F., Vesin, B., <strong>Possaghi, I.</strong>, &amp; Papavlasopoulou, S. (2025).
         Technology for Emotions: A Review of Tools for Enabling Children to Self-Report Their Emotions in Learning.
         <span class="pub-venue">Proceedings of ICWL-SETE 2025.</span>
         <span class="pub-award">🏆 Best Paper</span>
       </p>
-
+ 
       <p class="pub-item">
         <strong>Possaghi, I.</strong>, Zhang, F., Sharma, K., &amp; Papavlasopoulou, S. (2025).
         <a href="https://dl.acm.org/doi/10.1145/3713043.3728839">Behind the Scenes: Unpacking Students' Experience during a Collaborative AI Workshop using Multi-Modal Data.</a>
         <span class="pub-venue">Proceedings of the 24th ACM IDC, pp. 276–295.</span>
       </p>
-
+ 
       <p class="pub-item">
         <strong>Possaghi, I.</strong>, Zhang, F., Sharma, K., &amp; Papavlasopoulou, S. (2025).
         <a href="https://ieeexplore.ieee.org/abstract/document/11016308/">Fun Until the Limits: Students' Perceptions of Design Thinking Projects with Digital Tools.</a>
         <span class="pub-venue">IEEE EDUCON 2025, pp. 1–10.</span>
       </p>
-
+ 
       <p class="pub-item">
         Zhang, F., <strong>Possaghi, I.</strong>, Sharma, K., &amp; Papavlasopoulou, S. (2024).
         <a href="https://dl.acm.org/doi/abs/10.1145/3628516.3655805">High-performing Groups during Children's Collaborative Coding Activities: What Can Multimodal Data Tell Us?</a>
         <span class="pub-venue">Proceedings of the 23rd ACM IDC, pp. 533–559.</span>
       </p>
-
+ 
       <p class="pub-item">
         <strong>Possaghi, I.</strong>, Zhang, F., Sharma, K., &amp; Papavlasopoulou, S. (2024).
         <a href="https://dl.acm.org/doi/abs/10.1145/3628516.3655786">Design Thinking Activities for K-12 Students: Multi-Modal Data Explanations on Coding Performance.</a>
         <span class="pub-venue">Proceedings of the 23rd ACM IDC, pp. 290–306.</span>
       </p>
-
+ 
       <p class="pub-item">
         <strong>Possaghi, I.</strong>, &amp; Papavlasopoulou, S. (2024).
         <a href="https://ieeexplore.ieee.org/abstract/document/10578908">Challenges in digital STEM education delivery: A case study from the teachers' perspective.</a>
         <span class="pub-venue">IEEE EDUCON 2024, pp. 1–10.</span>
       </p>
-
+ 
       <p class="pub-item">
         <strong>Possaghi, I.</strong> (2023).
         <a href="https://dl.acm.org/doi/abs/10.1145/3585088.3593926">Designing Emerging Technology-Supported Learning Activities Based on the DT Approach for K–12 Users.</a>
         <span class="pub-venue">Proceedings of the 22nd ACM IDC, pp. 769–772.</span>
       </p>
-
+ 
       <p class="pub-item">
         Pucci, E., <strong>Possaghi, I.</strong>, Cutrupi, C. M., Baez, M., Cappiello, C., &amp; Matera, M. (2023).
         <a href="https://dl.acm.org/doi/full/10.1145/3544548.3581145">Defining patterns for a conversational web.</a>
         <span class="pub-venue">Proceedings of CHI 2023, pp. 1–17.</span>
       </p>
-
+ 
       <p class="pub-item">
         Baez, M., Cappiello, C., Cutrupi, C. M., Matera, M., <strong>Possaghi, I.</strong>, Pucci, E., Spadone, G., &amp; Pasquale, A. (2022).
         <a href="https://link.springer.com/chapter/10.1007/978-3-031-09917-5_26">Supporting natural language interaction with the web.</a>
         <span class="pub-venue">International Conference on Web Engineering, pp. 383–390. Springer.</span>
       </p>
-
+ 
       <p class="pub-item">
         Baez, M., Cutrupi, C. M., Matera, M., <strong>Possaghi, I.</strong>, Pucci, E., Spadone, G., Cappiello, C., &amp; Pasquale, A. (2022).
         <a href="https://dl.acm.org/doi/abs/10.1145/3491101.3519832">Exploring challenges for conversational web browsing with blind and visually impaired users.</a>
         <span class="pub-venue">CHI 2022 Extended Abstracts, pp. 1–7.</span>
       </p>
-
+ 
     </div>
-
-        <p class="pub-section-label">Project Deliverables</p>
+ 
+    <p class="pub-section-label">Project Deliverables</p>
     <div class="pub-list">
-
+ 
       <p class="pub-item">
-        Zhang, F., Papavlasopoulou, S., <strong> Possaghi, I.</strong>, &amp; Vesin, B. (2025).
+        Zhang, F., Papavlasopoulou, S., <strong>Possaghi, I.</strong>, &amp; Vesin, B. (2025).
         <a href="https://ec.europa.eu/research/participants/documents/downloadPublic?documentIds=080166e51f3ae61d&appId=PPGMS">The Exten.(D.T.)² Framework [V2], Deliverable 2.2</a>
         <span class="pub-venue">for Exten.(D.T.)² (Extending Design Thinking with Emerging Digital Technologies), Grant Agreement Number 101060231.</span>
       </p>
 
       <p class="pub-item">
+        Zhang, F., Papavlasopoulou, S., <strong>Possaghi, I.</strong>, &amp; Vesin, B. (2025).
+        <a href="https://ec.europa.eu/research/participants/documents/downloadPublic?documentIds=080166e51f3aec6d&appId=PPGMS">Guidelines for Mass Deployment [V2], Deliverable 2.3</a>
+        <span class="pub-venue">for Exten.(D.T.)² (Extending Design Thinking with Emerging Digital Technologies), Grant Agreement Number 101060231.</span>
+      </p>
+ 
+      <p class="pub-item">
         Girvan, C., Zhang, F., <strong>Possaghi, I.</strong>, Schjerven, Ø. J., Nyvoll, K., Schiza, K., Arampatzi, J., Gkreka, C., Shrestha, S., Strubbe, K., &amp; Selcuk, M. O. (2023).
         <a href="https://ec.europa.eu/research/participants/documents/downloadPublic?documentIds=080166e512801332&appId=PPGMS">Cycle 1 Evaluation Report, Deliverable 7.1</a>
         <span class="pub-venue">for Exten.(D.T.)² (Extending Design Thinking with Emerging Digital Technologies), Grant Agreement Number 101060231.</span>
       </p>
-
+ 
     </div>
-
+ 
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <footer>
     <a href="https://isi97-now.github.io/Academic_cv/">Online version ↗</a> &nbsp;·&nbsp; Isabella Possaghi &nbsp;·&nbsp; NTNU, Trondheim
     <br /><br />
     For my Clippy assistant I thank <a href="https://www.smore.com/clippy-js">clippyjs</a> by Jordan Scales &nbsp;·&nbsp; Clippy © Microsoft
   </footer>
-
+ 
 </main>
-
+ 
 <!-- ── Clippy ───────────────────────────────────────────────── -->
 <script type="module">
   import { initAgent } from "https://cdn.jsdelivr.net/npm/clippyjs/dist/index.mjs";
   import { Clippy } from "https://cdn.jsdelivr.net/npm/clippyjs/dist/agents/index.mjs";
-
+ 
   const agent = await initAgent(Clippy);
   agent.show();
   agent.speak("Do you use Word to write your manuscripts? I was born in Word. Please don't use Word.");
-
+ 
   setInterval(() => agent.animate(), 30000);
 </script>
-
+ 
 </body>
 </html>
